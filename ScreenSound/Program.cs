@@ -1,5 +1,24 @@
-﻿using ScreenSound.Menus;
+﻿using Microsoft.Data.SqlClient;
+using ScreenSound.Db;
+using ScreenSound.Menus;
 using ScreenSound.Modelos;
+
+try
+{
+    ArtistaDAL artistaDao = new ArtistaDAL();
+    artistaDao.InserirArtista(new Artista("Anthrax", "O quarto classico"));
+    List<Artista> artistas = artistaDao.GetArtistas();
+    foreach (Artista artista in artistas)
+    {
+        Console.WriteLine(artista);
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+return;
 
 Artista ira = new Artista("Ira!", "Banda Ira!");
 Artista beatles = new("The Beatles", "Banda The Beatles");
